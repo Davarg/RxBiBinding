@@ -1,21 +1,25 @@
+// swift-tools-version:4.2
 import PackageDescription
 
 let package = Package(
     name: "RxBiBinding",
     products: [
-        .library(
+        Product.library(
             name: "RxBiBinding",
             targets: ["RxBiBinding"]
         )
     ],
     dependencies: [
-        .package(url: "https://github.com/ReactiveX/RxSwift.git", from: "4.2" )
-    ],
-    targets: [
-        .target(
-            name: "RxBiBinding",
-            dependencies: ["RxSwift", "RxCocoa"]
+        Package.Dependency.package(
+            url: "https://github.com/ReactiveX/RxSwift.git", from: "4.3.1"
         )
     ],
-    swiftLanguageVersions: [.v4]
+    targets: [
+        Target.target(
+            name: "RxBiBinding",
+            dependencies: ["RxSwift", "RxCocoa"],
+            path: "Sources"
+        )
+    ],
+    swiftLanguageVersions: [.v4_2]
 )
